@@ -2,27 +2,24 @@ package irina.boot.csv;
 
 import com.opencsv.CSVReader;
 import irina.boot.service.Question;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 import java.io.*;
 import java.util.*;
 
-
-@Component
+@Configuration
 public class CSVReaderImpl implements ICSVReader {
-    @Override
-    public List<Question> getQuestions() throws IOException {
-        List<Question> result = new ArrayList<>();
 
+    public List<Question> getQuestions() throws IOException {
+
+        List<Question> result = new ArrayList<>();
         InputStream is = CSVReaderImpl.class.getResourceAsStream("/questions.csv");
         CSVReader csvReader = new CSVReader(new InputStreamReader(is));
         String[] values = null;
         while ((values = csvReader.readNext()) != null){
-
             String read= Arrays.toString(values);
-            String[] ans = read.split(";");
-            result.add(new Question(ans[1], ans[2], ans[3]));
+            String[] answers = read.split(";");
+            result.add(new Question(answers[1], answers[2], answers[3]));
         }
-
         return result;
     }
 }
