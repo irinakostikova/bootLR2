@@ -3,9 +3,12 @@ package irina.boot.csv;
 import com.opencsv.CSVReader;
 import irina.boot.service.Question;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
+
 import java.io.*;
 import java.util.*;
 
+@Service
 @Configuration
 public class CSVReaderImpl implements ICSVReader {
 

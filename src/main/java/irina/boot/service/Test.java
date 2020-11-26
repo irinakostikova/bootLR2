@@ -2,25 +2,22 @@ package irina.boot.service;
 
 
 import irina.boot.csv.ICSVReader;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
 
-@Component
+@Service
 public class Test {
 
-
+    @Autowired
     private ICSVReader reader;
     private int count;
 
-    public Test(ICSVReader reader){
-        this.reader = reader;
-    }
-
-    public void startTest() throws IOException {
+   public void startTest() throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Для ответа напишите номер правильного варианта!\n");
 
